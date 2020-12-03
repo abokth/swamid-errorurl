@@ -19,4 +19,4 @@ The PHP version:
 
 Copyright (c) 2019 - 2020, SUNET (BSD 2-clause license)
 
-See LICENSE.txt for more info.
+See LICENSE for more info.
