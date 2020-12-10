@@ -12,18 +12,14 @@ function trim_ws($param)
 	return trim(preg_replace('/^[ \t]*/m', '', $param));
 }
 
-$lang		= safe_get('lang');
-$entityid 	= safe_get('entityid');
-$errorurl_code	= safe_get('errorurl_code');
-$errorurl_ts	= safe_get('errorurl_ts');
-$errorurl_rp	= safe_get('errorurl_rp');
-$errorurl_tid	= safe_get('errorurl_tid');
-$errorurl_ctx	= safe_get('errorurl_ctx');
+function print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $errorurl_tid, $errorurl_ctx)
+{
+	global $errorurl_errors;
+	global $logo;
+	global $languages;
+	global $entityid;
 
-if (!isset($languages[$lang])) {
-	$lang = $default_lang;
-}
-$text = $texts[$lang];
+	$title = get_errorcode_text($lang, $errorurl_code, $errorurl_ctx, 'header');
 
 ?>
 <html>
@@ -42,43 +38,49 @@ $text = $texts[$lang];
 <p class="text-right">
 <?php
 
-$first = true;
-foreach ($languages as $l => $values) {
-	if ($l == $lang) {
-		continue;
-	}
+	$first = true;
+	foreach ($languages as $l => $values) {
+		if ($l == $lang) {
+			continue;
+		}
 
-	if (!$first) {
-		print " | ";
-	}
-	$first = false;
+		if (!$first) {
+			print " | ";
+		}
+		$first = false;
 
 ?>
 <a href="?lang=<?= $l ?><?= ($entityid) ? "&entityid=$entityid" : "" ?><?= ($errorurl_code) ? "&errorurl_code=$errorurl_code" : "" ?><?= ($errorurl_ts) ? "&errorurl_ts=$errorurl_ts" : "" ?><?= ($errorurl_rp) ? "&errorurl_rp=$errorurl_rp" : "" ?><?= ($errorurl_tid) ? "&errorurl_tid=$errorurl_tid" : "" ?><?= ($errorurl_ctx) ? "&errorurl_ctx=$errorurl_ctx" : "" ?>"><img src="<?= $values['logo'] ?>" alt=""> <span><?= $values['select'] ?></span></a>
 <?php
 
+	}
+
+?>
+<h1><?= $title ?></h1>
+<?php
+
 }
 
-function print_error($lang, $h, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx)
+function get_error_header($lang, $errorurl_code)
 {
 	global $errorurl_errors;
-	global $helpdesks;
-	global $text;
+	return trim_ws($errorurl_errors[$errorurl_code][$lang]['header']);
+}
+
+function get_errorcode_text($lang, $errorurl_code, $errorurl_ctx, $text_id)
+{
+	global $errorurl_errors;
 
 	$errorurl_error = $errorurl_errors[$errorurl_code][$lang];
 
-	$header = '';
-	$body = '';
+	$text = '';
 	$ctx_found = false;
 	if ($errorurl_ctx && isset($errorurl_error['ctx'])) {
 		foreach ($errorurl_error['ctx'] as $type => $values) {
 			foreach ($values['identifiers'] as $identifier) {
 				if (strpos($errorurl_ctx, $identifier) !== false) {
-					if (isset($values['header'])) {
-						$header = trim_ws($values['header']);
-					}
-					if (isset($values['body'])) {
-						$body = trim_ws($values['body']);
+					if (isset($values[$text_id])) {
+						$text = trim_ws($values[$text_id]);
 					}
 					$ctx_found = true;
 					break;
@@ -89,17 +91,36 @@ function print_error($lang, $h, $entityid, $errorurl_code, $errorurl_ts, $erroru
 			}
 		}
 	}
-	if ($header == '') {
-		$header = trim_ws($errorurl_error['header']);
+	if ($text == '') {
+		$text = trim_ws($errorurl_error[$text_id]);
 	}
-	if ($body == '') {
-		$body = trim_ws($errorurl_error['body']);
+
+	return $text;
+}
+
+function print_error($lang, $print_sub_header, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx)
+{
+	global $errorurl_errors;
+	global $helpdesks;
+	global $text;
+
+	$errorurl_error = $errorurl_errors[$errorurl_code][$lang];
+
+	$header = get_errorcode_text($lang, $errorurl_code, $errorurl_ctx, 'header');
+	$body = get_errorcode_text($lang, $errorurl_code, $errorurl_ctx, 'body');
+
+	if ($print_sub_header) {
+?>
+<h2><?= $header ?></h2>
+<?php
+
 	}
 
 ?>
-<<?= $h ?>><?= $header ?></<?= $h ?>>
 <?= $body ?>
+
 <p><?= $text['contact_information'] ?>
+
 <?php
 
 	if ($errorurl_ctx && $errorurl_ctx != 'ERRORURL_CTX') {
@@ -112,6 +133,7 @@ ERRORURL_TS:  <?= $errorurl_ts ?> (<?= date(DATE_ATOM, $errorurl_ts) ?>)<br>
 ERRORURL_RP:  <?= $errorurl_rp ?><br>
 ERRORURL_TID: <?= $errorurl_tid ?><br>
 ERRORURL_CTX: <?= $errorurl_ctx ?>
+
 </code>
 </p>
 <?php
@@ -119,24 +141,42 @@ ERRORURL_CTX: <?= $errorurl_ctx ?>
 	}
 }
 
+$lang		= safe_get('lang');
+$entityid 	= safe_get('entityid');
+$errorurl_code	= safe_get('errorurl_code');
+$errorurl_ts	= safe_get('errorurl_ts');
+$errorurl_rp	= safe_get('errorurl_rp');
+$errorurl_tid	= safe_get('errorurl_tid');
+$errorurl_ctx	= safe_get('errorurl_ctx');
+
+if (!isset($languages[$lang])) {
+	$lang = $default_lang;
+}
+$text = $texts[$lang];
+
 if (in_array($errorurl_code, array('IDENTIFICATION_FAILURE', 'AUTHENTICATION_FAILURE', 'AUTHORIZATION_FAILURE', 'OTHER_ERROR'))) {
-	print_error($lang, 'h1', $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
+	print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $errorurl_tid, $errorurl_ctx);
+	print_error($lang, $print_sub_header = false, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
 } else {
+	print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $errorurl_tid, $errorurl_ctx);
 
 ?>
-<h1><?= $text['errorurl_code_not_set_header'] ?></h1>
-<p>
-<?= $text['errorurl_code_not_set_text'] ?>
+<?= trim_ws($errorurl_errors[$errorurl_code][$lang]['body']) ?>
+
 <?php
 
 	foreach ($errorurl_errors as $errorurl_code => $definition) {
-		print_error($lang, 'h2', $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
+		if ($errorurl_code == "ERRORURL_CODE") {
+			continue;
+		}
+		print_error($lang, $print_sub_header = true, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
 	}
 
 }
 
 ?>
 <?= $text['footer'] ?>
+
 </div>
 </body>
 </html>
