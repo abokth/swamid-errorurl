@@ -1,7 +1,6 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import="java.util.*" %>
-<%@ include file = "default-config.jsp" %>
-<%@ include file = "local-config.jsp" %>
+<%@ include file = "config.jsp" %>
 <%!
 
 class Text
