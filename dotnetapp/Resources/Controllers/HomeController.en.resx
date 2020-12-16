@@ -120,6 +120,9 @@
   <data name="contact_information" xml:space="preserve">
     <value>The support of your organisation, DISPLAYNAME, can be reached at EMAIL.</value>
   </data>
+  <data name="FooterText" xml:space="preserve">
+    <value />
+  </data>
   <data name="technical_information" xml:space="preserve">
     <value>Technical information:</value>
   </data>

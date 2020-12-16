@@ -53,8 +53,9 @@
         @*class="border-top footer text-muted"*@
         <div class="container">
             <div class="d-inline-block">
-                
-                @*@Localizer.GetHtml("FooterText")*@
+                @Html.Raw(ViewData["Footer"])
+
+            @*@Localizer.GetHtml("FooterText")*@
             </div>
         </div>
     </footer>

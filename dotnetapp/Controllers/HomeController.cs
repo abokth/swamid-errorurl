@@ -22,6 +22,8 @@ namespace Swamid.Errorurl.Controllers
         private IStringLocalizer<HomeController> _localizer;
         [ViewData]
         public string  Title { get; set; }
+        [ViewData]
+        public string Footer { get; set; }
         public HomeController(ILogger<HomeController> logger, IStringLocalizer<HomeController> localizer)
         {
             _logger = logger;
@@ -60,6 +62,7 @@ namespace Swamid.Errorurl.Controllers
                 
                 model.LoginError = new List<LoginError>() { e};
             }
+            Footer = _localizer.GetString("FooterText").Value;
             Title = model.LoginError.First().Header;
             return View(model);
         }

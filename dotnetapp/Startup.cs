@@ -35,15 +35,7 @@ namespace Swamid.Errorurl
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = "Resources"; })
                 .AddDataAnnotationsLocalization();
-            //services.AddMvc()
-            //    .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
-            //    .AddDataAnnotationsLocalization();
 
-
-            //   .AddDataAnnotationsLocalization(options => {
-            //    options.DataAnnotationLocalizerProvider = (type, factory) =>
-            //        factory.Create(typeof(SharedResource));
-            //});
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
@@ -56,12 +48,7 @@ namespace Swamid.Errorurl
                 options.SupportedCultures = cultures;
                 options.SupportedUICultures = cultures;
             });
-            //services.AddTransient<IStringLocalizer<SharedResources>>();
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -83,7 +70,6 @@ namespace Swamid.Errorurl
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
 
