@@ -22,6 +22,13 @@ The JSP version:
 1. Upload the contents of jsp to, for example, https://saml-error.example.com
 1. Tell your federation operator to set the errorURL of your Identity Provider to https://saml-error.example.com/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
 
+The .Net Core version:
+
+1. Replace wwwroot/images/logo.png with your own logo
+1. Update at least DISPLAYNAME and EMAIL in Resources/Controllers/HomeController.\*.resx
+1. Upload the contents of dotnetapp to, for example, https://saml-error.example.com
+1. Tell your federation operator to set the errorURL of your Identity Provider to https://saml-error.example.com/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
+
 ## License
 
 Copyright (c) 2019 - 2020, SUNET (BSD 2-clause license)
