@@ -11,13 +11,20 @@ namespace Swamid.Errorurl.Domain
 {
     public class QueryParams
     {
-        public string errorurl_code { get; set; }
-
+        private string _errorurl_code;
         private string _errorurl_ts;
         private string _errorurl_rp;
         private string _errorurl_tid;
         private string _errorurl_ctx;
         private string _lang;
+        public string errorurl_code
+        {
+            get
+            {
+                return _errorurl_code;
+            }
+            set { _errorurl_code = StringFunctions.StripString(value); }
+        }
         [DisplayName("ERRORURL_TS")]
         public string errorurl_ts
         {

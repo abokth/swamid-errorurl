@@ -7,13 +7,13 @@
 @inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
-@{
+@*@{
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cultureItems = LocOptions.Value.SupportedUICultures
         .Select(c => new SelectListItem { Value = c.Name, Text = Localizer.GetString(c.Name) })
         .ToList();
     var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
-}
+}*@
 @*@{
         @ViewData["Title"]
     }*@
@@ -22,9 +22,14 @@
 
     <div>
         <div class="float-right">
-            <a href="@Url.Action("SetCulture","Culture",new {culture = Localizer["culture"].Value, returnUrl = returnUrl  })">
-                <img src="@Localizer["logo"].Value" />@Localizer["culture_text"].Value
+            <a href="@Url.Action("Index","Home", 
+               new {errorurl_code=Model.Parameters.errorurl_code,errorurl_ts=Model.Parameters.errorurl_ts,errorurl_rp=Model.Parameters.errorurl_rp,
+               errorurl_tid=Model.Parameters.errorurl_tid,errorurl_ctx=Model.Parameters.errorurl_ctx,lang=Model.Culture})">
+                <img src="@Model.CultureLogo" />@Model.CultureText
             </a>
+            @*<a href="@Url.Action("SetCulture","Culture",new {culture = Localizer["culture"].Value, returnUrl = returnUrl  })">
+                <img src="@Localizer["logo"].Value" />@Localizer["culture_text"].Value
+            </a>*@
         </div>
             @foreach (var err in Model.LoginError)
             {
