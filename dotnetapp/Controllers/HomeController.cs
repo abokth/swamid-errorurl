@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Builder;
 using System.Globalization;
 using System.Web;
 using Microsoft.EntityFrameworkCore.Internal;
+using System.Threading;
 
 namespace Swamid.Errorurl.Controllers
 {
@@ -44,16 +45,16 @@ namespace Swamid.Errorurl.Controllers
        
         public IActionResult Index([FromQuery] QueryParams query)
         {
-            if (SetLanguage(query.lang))
-            {
-                var u = HttpContext.Request.Path.Value;
-                u = u.EndsWith('/') == false ? u + "/" : u;
-                var q =System.Web.HttpUtility.ParseQueryString(HttpContext.Request.QueryString.Value);
-                q.Remove("lang");
-                return Redirect("~/?"+ q);
-            }
             
-                var le = GetErrorTexts();
+            if (query.lang != null)
+            {
+                var q = System.Web.HttpUtility.ParseQueryString(HttpContext.Request.QueryString.Value);
+                q.Remove("lang");
+                var returnUrl = "~/" + (q.Keys.Count == 0 ? "" : "?" + q).ToString();
+                return RedirectToAction("SetCulture", "Culture", new { culture = query.lang, returnUrl = returnUrl });
+            }
+
+            var le = GetErrorTexts();
                 var model = new ErrorViewModel() { Parameters = query };
                 model.TechnicalInfo = _localizer.GetString("technical_information").Value;
                 model.ContactInfo = _localizer.GetString("contact_information").Value;
@@ -88,20 +89,24 @@ namespace Swamid.Errorurl.Controllers
             
         }
 
-        private bool SetLanguage(string language)
-        {
-            var ret = false;
-            if (language != null)
-            {
-                Response.Cookies.Append(
-                    CookieRequestCultureProvider.DefaultCookieName,
-                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(language)),
-                    new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
-                );
-                ret = true;
-            }
-            return ret;
-        }
+        //private IActionResult SetLanguage(string language)
+        //{
+        //    var ret = false;
+        //    if (language != null)
+        //    { 
+                //var cultureInfo = new CultureInfo(language);
+                //CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+                //CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+                //Thread.CurrentThread.CurrentCulture = cultureInfo;
+                //Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                //Response.Cookies.Append(
+                //    CookieRequestCultureProvider.DefaultCookieName,
+                //    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(language)),
+                //    new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+                //);
+                //ret = true;
+        //    }
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
