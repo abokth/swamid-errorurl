@@ -7,7 +7,7 @@ namespace Swamid.Errorurl.Controllers
 {
     public class CultureController : Controller
     {
-        [HttpPost]
+        
         public IActionResult SetCulture(string culture, string returnUrl)
         {
             Response.Cookies.Append(
