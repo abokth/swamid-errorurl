@@ -1,4 +1,10 @@
 {
+  "culture": "sv",
+  "switchLangText": "In English",
+  "switchLang": "en",
+  "switchLangImage": "images/english.png",
+  "technicalInformation": "Teknisk information:",
+  "contactInfo": "Supporten för din organisation, DISPLAYNAME, kan nås via EMAIL.",
   "errors": [
     {
       "type": "NO_CODE",
@@ -87,4 +93,4 @@
       ]
     }
   ]
-  }
+}
