@@ -3,7 +3,7 @@
     {
       "type": "NO_CODE",
       "header": "Login failed",
-      "body": [ "Login failed at the service you tried to access. Please see below for possible reasons and actions."],
+      "body": [ "Login failed at the service you tried to access. Please see below for possible reasons and actions."]
     },
     {
       "type": "IDENTIFICATION_FAILURE",
