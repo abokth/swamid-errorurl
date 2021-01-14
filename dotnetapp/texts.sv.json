@@ -1,14 +1,16 @@
 {
-  "culture": "sv",
-  "switchLangText": "In English",
-  "switchLang": "en",
-  "switchLangImage": "images/english.png",
-  "technicalInformation": "Teknisk information:",
-  "contactInfo": "Supporten för din organisation, DISPLAYNAME, kan nås via EMAIL.",
-  "footer": "footer",
+  "common": {
+    "logo": "logo.png",
+    "lang": "sv",
+    "langFlag": "/images/swedish.png",
+    "langSelect": "På svenska",
+    "contactInformation": "Supporten för din organisation, DISPLAYNAME, kan nås via EMAIL.",
+    "technicalInformation": "Teknisk information",
+    "footer": ""
+  },
   "errors": [
     {
-      "type": "NO_CODE",
+      "type": "ERRORURL_CODE",
       "header": "Problem vid inloggning",
       "body": [ "Inloggning till tjänsten misslyckades. Se nedan för möjliga orsaker och åtgärder." ]
     },

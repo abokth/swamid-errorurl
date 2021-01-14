@@ -70,7 +70,7 @@ namespace Swamid.Errorurl.Controllers
                 //ToDo handle if e is null
                 model.LoginError = new List<LoginError>() { e };
             }
-            Footer = le.Footer;// _localizer.GetString("FooterText").Value;
+            Footer = le.Common.Footer;// _localizer.GetString("FooterText").Value;
             Title = model.LoginError.First().Header;
             return View(model);
             
@@ -79,21 +79,50 @@ namespace Swamid.Errorurl.Controllers
         {
             if (errors != null)
             {
-                model.Culture = errors.SwitchLang; 
-                model.CultureText = errors.SwitchLangText;
-                model.CultureLogo = errors.SwitchLangImage;
-                model.TechnicalInfo = errors.TechnicalInformation;
-                model.ContactInfo = errors.ContactInfo;
+                //model.Culture = errors.Common.Lang;
+                //model.CultureText = errors.Common.LangSelect;
+                //model.CultureLogo = GetLangNavigation(errors.Common.LangFlag);
+                model.Navigations = GetLangNavigation();
+                model.TechnicalInfo = errors.Common.TechnicalInformation;
+                model.ContactInfo = errors.Common.ContactInformation;
             }
         }
+        private List<Navigation> GetLangNavigation()
+        {
+            var navigations = new List<Navigation>(3);
+            foreach(var l in _languageSettings.LoginErrors)
+            {
+                if (l.Common.Lang.ToLower() != _culture)
+                {
+                    navigations.Add(new Navigation()
+                    {
+                        Culture = l.Common.Lang,
+                        CultureLogo = GetLogoPath(l.Common.LangFlag),
+                        CultureText = l.Common.LangSelect
+                    });
+                }
+            }
+            return navigations;
+        }
+
+        private string GetLogoPath(string path)
+        {
+            var imgPath = path;
+            if (!string.IsNullOrEmpty(_languageSettings.SubsiteName))
+            {
+                imgPath = "/" + _languageSettings.SubsiteName + imgPath;
+            }
+            return imgPath;
+        }
+
         private void SetLanguage(QueryParams query)
         {
-            _culture = _languageSettings.DefaultCulture;
+            _culture = _languageSettings.DefaultCulture.ToLower();
             if (query.lang != null)
             {
                 if (_languageSettings.SupportedCultures.Contains(query.lang.ToLower()))
                 {
-                    _culture = query.lang;
+                    _culture = query.lang.ToLower();
                 }    
             }
             query.lang = null;
@@ -107,7 +136,9 @@ namespace Swamid.Errorurl.Controllers
         }
         private LoginErrors GetErrors()
         {
-            return _languageSettings.LoginErrors.Where(e => e.culture == _culture).FirstOrDefault();
+            var e = (from l in _languageSettings.LoginErrors.Where(e => e.Common.Lang == _culture) select l).FirstOrDefault();
+            return e;
+            //return _languageSettings.LoginErrors.Where(e => e. == _culture).FirstOrDefault();
         }
     }
 }

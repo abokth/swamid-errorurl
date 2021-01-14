@@ -9,28 +9,30 @@ namespace Swamid.Errorurl.Domain
     
     public class LoginErrors
     {
-        [JsonPropertyName("culture")]
-        public string culture { get; set; }
-        [JsonPropertyName("switchLangText")]
-        public string SwitchLangText { get; set; }
-        [JsonPropertyName("switchLang")]
-        public string SwitchLang { get; set; }
-        [JsonPropertyName("switchLangImage")]
-        public string SwitchLangImage { get; set; }
-        [JsonPropertyName("technicalInformation")]
-        public string TechnicalInformation { get; set; }
-        [JsonPropertyName("contactInfo")]
-        public string ContactInfo { get; set; }
+        [JsonPropertyName("common")]
+        public Common Common { get; set; }
         [JsonPropertyName("error")]
-        public string Footer { get; set; }
-        [JsonPropertyName("error")]
-        
         public LoginError[] Errors { get; set; }
     }
-
+    public class Common
+    {
+        [JsonPropertyName("logp")]
+        public string Logo { get; set; }
+        [JsonPropertyName("lang")]
+        public string Lang { get; set; }
+        [JsonPropertyName("langFlag")]
+        public string LangFlag { get; set; }
+        [JsonPropertyName("langSelect")]
+        public string LangSelect { get; set; }
+        [JsonPropertyName("contactInformation")]
+        public string ContactInformation { get; set; }
+        [JsonPropertyName("contactInformation")]
+        public string TechnicalInformation { get; set; }
+        [JsonPropertyName("footer")]
+        public string Footer { get; set; }
+    }
     public class LoginError
     {
-
         [JsonPropertyName("type")]
         public string Type { get; set; }
         [JsonPropertyName("header")]

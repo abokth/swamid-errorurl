@@ -1,14 +1,16 @@
 {
-  "culture": "en",
-  "switchLangText": "In Swedish",
-  "switchLang": "sv",
-  "switchLangImage": "images/swedish.png",
-  "technicalInformation": "Technical information:",
-  "contactInfo": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
-  "footer": "footer",
+  "common": {
+    "logo": "logo.png",
+    "lang": "en",
+    "langFlag": "/images/english.png",
+    "langSelect": "In English",
+    "contactInformation": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
+    "technicalInformation": "Technical information",
+    "footer": ""
+  },
   "errors": [
     {
-      "type": "NO_CODE",
+      "type": "ERRORURL_CODE",
       "header": "Login failed",
       "body": [ "Login failed at the service you tried to access. Please see below for possible reasons and actions." ]
     },

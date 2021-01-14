@@ -12,6 +12,7 @@ namespace Swamid.Errorurl.Domain
         {
             LoginErrors = new List<LoginErrors>(3);
         }
+        public string SubsiteName { get; set; }
         public string DefaultCulture { get; set; }
 
         public List<string> SupportedCultures { get; set; }

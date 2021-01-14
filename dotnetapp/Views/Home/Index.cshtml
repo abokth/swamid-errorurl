@@ -22,15 +22,17 @@
 
     <div>
         <div class="float-right">
-            <a href="@Url.Action("Index","Home", 
-               new {errorurl_code=Model.Parameters.errorurl_code,errorurl_ts=Model.Parameters.errorurl_ts,errorurl_rp=Model.Parameters.errorurl_rp,
-               errorurl_tid=Model.Parameters.errorurl_tid,errorurl_ctx=Model.Parameters.errorurl_ctx,lang=Model.Culture})">
-                <img src="@Model.CultureLogo" />@Model.CultureText
-            </a>
-            @*<a href="@Url.Action("SetCulture","Culture",new {culture = Localizer["culture"].Value, returnUrl = returnUrl  })">
-                <img src="@Localizer["logo"].Value" />@Localizer["culture_text"].Value
-            </a>*@
-        </div>
+            @foreach (var n in Model.Navigations)
+            {
+                //var o = 
+                <a href="@Url.Action("Index","Home",new {errorurl_code=@Model.Parameters.errorurl_code,errorurl_ts=Model.Parameters.errorurl_ts,errorurl_rp=Model.Parameters.errorurl_rp,
+                    errorurl_tid=Model.Parameters.errorurl_tid,errorurl_ctx=Model.Parameters.errorurl_ctx,lang=n.Culture})">
+                    <img src="@n.CultureLogo" />@n.CultureText</a>
+            }
+
+                
+
+            </div>
             @foreach (var err in Model.LoginError)
             {
                 <h2>@err.Header</h2>
