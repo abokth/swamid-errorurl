@@ -5,6 +5,7 @@
   "switchLangImage": "images/english.png",
   "technicalInformation": "Teknisk information:",
   "contactInfo": "Supporten för din organisation, DISPLAYNAME, kan nås via EMAIL.",
+  "footer": "footer",
   "errors": [
     {
       "type": "NO_CODE",

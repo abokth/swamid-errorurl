@@ -19,8 +19,8 @@ namespace Swamid.Errorurl.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IStringLocalizer<HomeController> _localizer;
-        private IOptions<RequestLocalizationOptions> _locOptions;
+        //private IStringLocalizer<HomeController> _localizer;
+        //private IOptions<RequestLocalizationOptions> _locOptions;
         private LanguageSettings _languageSettings;
         private string _culture;
 
@@ -29,14 +29,12 @@ namespace Swamid.Errorurl.Controllers
         [ViewData]
         public string Footer { get; set; }
         public HomeController(ILogger<HomeController> logger, 
-            IStringLocalizer<HomeController> localizer,
-            IOptions<RequestLocalizationOptions> LocOptions,
             LanguageSettings languageSettings
 )
         {
             _logger = logger;
-            _localizer = localizer;
-            _locOptions = LocOptions;
+            //_localizer = localizer;
+            //_locOptions = LocOptions;
             _languageSettings = languageSettings;
         }
        
@@ -72,7 +70,7 @@ namespace Swamid.Errorurl.Controllers
                 //ToDo handle if e is null
                 model.LoginError = new List<LoginError>() { e };
             }
-            Footer = _localizer.GetString("FooterText").Value;
+            Footer = le.Footer;// _localizer.GetString("FooterText").Value;
             Title = model.LoginError.First().Header;
             return View(model);
             

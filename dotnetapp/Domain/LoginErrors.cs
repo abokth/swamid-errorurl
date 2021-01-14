@@ -22,6 +22,9 @@ namespace Swamid.Errorurl.Domain
         [JsonPropertyName("contactInfo")]
         public string ContactInfo { get; set; }
         [JsonPropertyName("error")]
+        public string Footer { get; set; }
+        [JsonPropertyName("error")]
+        
         public LoginError[] Errors { get; set; }
     }
 

@@ -17,5 +17,6 @@ namespace Swamid.Errorurl.Models
         public string CultureText { get; set; }
         public string CultureLogo { get; set; }
         public string ReturnUrl { get; set; }
+        public string Footer  { get; set; }
     }
 }

@@ -5,6 +5,7 @@
   "switchLangImage": "images/swedish.png",
   "technicalInformation": "Technical information:",
   "contactInfo": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
+  "footer": "footer",
   "errors": [
     {
       "type": "NO_CODE",
