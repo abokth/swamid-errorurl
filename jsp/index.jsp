@@ -180,13 +180,13 @@ String safeHtml(String param)
 %>
 <%
 
-String lang		= request.getParameter("lang");
-String entityid 	= request.getParameter("entityid");
-String errorurl_code	= request.getParameter("errorurl_code");
-String errorurl_ts	= request.getParameter("errorurl_ts");
-String errorurl_rp	= request.getParameter("errorurl_rp");
-String errorurl_tid	= request.getParameter("errorurl_tid");
-String errorurl_ctx	= request.getParameter("errorurl_ctx");
+String lang		= (request.getParameter("lang")          != null) ? request.getParameter("lang") : "";
+String entityid 	= (request.getParameter("entityid")      != null) ? request.getParameter("entityid") : "";
+String errorurl_code	= (request.getParameter("errorurl_code") != null) ? request.getParameter("errorurl_code") : "";
+String errorurl_ts	= (request.getParameter("errorurl_ts")   != null) ? request.getParameter("errorurl_ts") : "";
+String errorurl_rp	= (request.getParameter("errorurl_rp")   != null) ? request.getParameter("errorurl_rp") : "";
+String errorurl_tid	= (request.getParameter("errorurl_tid")  != null) ? request.getParameter("errorurl_tid") : "";
+String errorurl_ctx	= (request.getParameter("errorurl_ctx")  != null) ? request.getParameter("errorurl_ctx") : "";
 
 if (!languages.contains(lang)) {
 	lang = default_lang;
