@@ -103,24 +103,26 @@ class ErrorURL_Error
 $basic_info_lang = array();
 $errorurl_errors_lang = array();
 
-foreach ($languages as $lang) {
-	$texts_file = "texts.$lang.json";
-	if (!$json = file_get_contents($texts_file)) {
-		print "Failed to open $texts_file";
+foreach ($language_files as $language_file) {
+	if (!$json = file_get_contents($language_file)) {
+		print "Failed to open $language_file";
 		exit(0);
 	}
 	
 	if (!$parsed_json = json_decode($json, true)) {
-		print "Failed to parse json from $texts_file";
+		print "Failed to parse json from $language_file";
 		exit(0);
 	}
+
+	$lang = $parsed_json['common']['lang'];
 
 	$basic_info_lang[$lang] = array();
 	$errorurl_errors_lang[$lang] = array();
 
-	$basic_info_lang[$lang]['logo'] = $parsed_json['common']['logo'];
+	$basic_info_lang[$lang]['lang'] = $lang;
 	$basic_info_lang[$lang]['langFlag'] = $parsed_json['common']['langFlag'];
 	$basic_info_lang[$lang]['langSelect'] = $parsed_json['common']['langSelect'];
+	$basic_info_lang[$lang]['logo'] = $parsed_json['common']['logo'];
 	$basic_info_lang[$lang]['contactInformation'] = $parsed_json['common']['contactInformation'];
 	$basic_info_lang[$lang]['technicalInformation'] = $parsed_json['common']['technicalInformation'];
 	$basic_info_lang[$lang]['footer'] = $parsed_json['common']['footer'];

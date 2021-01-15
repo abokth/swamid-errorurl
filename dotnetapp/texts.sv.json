@@ -1,9 +1,9 @@
 {
   "common": {
-    "logo": "logo.png",
     "lang": "sv",
     "langFlag": "swedish.png",
     "langSelect": "På svenska",
+    "logo": "logo.png",
     "contactInformation": "Supporten för din organisation, DISPLAYNAME, kan nås via EMAIL.",
     "technicalInformation": "Teknisk information",
     "footer": ""

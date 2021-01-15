@@ -109,22 +109,25 @@ class ErrorURL_Error
 LinkedHashMap<String, LinkedHashMap<String, String>> basic_info_lang = new LinkedHashMap();
 LinkedHashMap<String, LinkedHashMap<String, ErrorURL_Error>> errorurl_errors_lang = new LinkedHashMap();
 
-for (String l : languages) {
-	String json = new String(Files.readAllBytes(Paths.get(getServletContext().getResource("WEB-INF/resources/" + "texts." + l + ".json").getFile())), StandardCharsets.UTF_8);
+for (String language_file : language_files) {
+	String json = new String(Files.readAllBytes(Paths.get(getServletContext().getResource("WEB-INF/resources/" + language_file).getFile())), StandardCharsets.UTF_8);
 	JSONObject jobject = new JSONObject(json);
 
 	LinkedHashMap<String, String> basic_info = new LinkedHashMap();
 
 	JSONObject common = jobject.getJSONObject("common");
 
-	basic_info.put("logo", common.getString("logo"));
+	String lang = common.getString("lang");
+
+	basic_info.put("lang", lang);
 	basic_info.put("langFlag", common.getString("langFlag"));
 	basic_info.put("langSelect", common.getString("langSelect"));
+	basic_info.put("logo", common.getString("logo"));
 	basic_info.put("contactInformation", common.getString("contactInformation"));
 	basic_info.put("technicalInformation", common.getString("technicalInformation"));
 	basic_info.put("footer", common.getString("footer"));
 
-	basic_info_lang.put(l, basic_info);
+	basic_info_lang.put(lang, basic_info);
 
 	LinkedHashMap<String, ErrorURL_Error> errorurl_errors = new LinkedHashMap();
 
@@ -170,7 +173,7 @@ for (String l : languages) {
 
 		errorurl_errors.put(new_errorurl_error.get_id(), new_errorurl_error);
 	}
-	errorurl_errors_lang.put(l, errorurl_errors);
+	errorurl_errors_lang.put(lang, errorurl_errors);
 }
 
 %>
