@@ -1,26 +1,26 @@
 {
   "common": {
     "logo": "logo.png",
-    "lang": "en",
-    "langFlag": "/images/english.png",
-    "langSelect": "In English",
-    "contactInformation": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
-    "technicalInformation": "Technical information",
+    "lang": "fr",
+    "langFlag": "/images/french.png",
+    "langSelect": "En français",
+    "contactInformation": "L'assistance de votre organisation, DISPLAYNAME, peut être contactée à l'adresse EMAIL.",
+    "technicalInformation": "Informations techniques",
     "footer": ""
   },
   "errors": [
     {
       "type": "ERRORURL_CODE",
-      "header": "Login failed",
-      "body": [ "Login failed at the service you tried to access. Please see below for possible reasons and actions."]
+      "header": "Échec de la connexion",
+      "body": [ "La connexion a échoué au service auquel vous avez tenté d'accéder. Veuillez voir ci-dessous pour les raisons et actions possibles." ]
     },
     {
       "type": "IDENTIFICATION_FAILURE",
-      "header": "Identification failed",
+      "header": "L'identification a échoué",
       "body": [
-        "The service that you tried to access did not get all required attributes for identification and/or personalization.",
-        "This may be because your institution is missing those attributes or that your institution is not configured to release those attributes to the service you tried to access.",
-        "Please contact support at your institution and include the name of the service you tried to access, any missing attributes if you know what they are (the service may have informed you) and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message."
+        "Le service auquel vous avez tenté d'accéder n'a pas obtenu tous les attributs requis pour l'identification et / ou la personnalisation.",
+        "Cela peut être dû au fait que votre établissement n'a pas ces attributs ou que votre établissement n'est pas configuré pour libérer ces attributs pour le service auquel vous avez tenté d'accéder.",
+        "Veuillez contacter le support de votre institution et inclure le nom du service auquel vous avez tenté d'accéder, les attributs manquants si vous savez ce qu'ils sont (le service peut vous en avoir informé) et, si possible, une capture d'écran du message d'erreur au service ( y compris la barre d'adresse en haut du navigateur Web) et également de ce message."
       ]
     },
     {
@@ -38,9 +38,9 @@
       "body": [
         "The service that you tried to access requires privileges that you do not have.",
         "Typical requirements include:",
-        "<b>A <i>confirmed</i> user account, or \"high\" <i>identity assurance level</i> (AL)</b><br/>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.",
-        "<b>Affiliation</b><br/>Your <i>affiliation</i> describes your relationship with the Blue Star University. The set of attributes include for example <i>student</i> and <i>employee</i>. If you are a student and the service you tried to access did not receive the <i>student</i> affiliation, please contact IT Service Desk to correct this.",
-        "<b>Some specific entitlements</b><br/>Entitlements are specific privileges at specific services. If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.",
+        "<b>A <i>confirmed</i> user account, or \"high\" <i>identity assurance level</i> (AL)</b></br>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.",
+        "<b>Affiliation</b></br>Your <i>affiliation</i> describes your relationship with the Blue Star University. The set of attributes include for example <i>student</i> and <i>employee</i>. If you are a student and the service you tried to access did not receive the <i>student</i> affiliation, please contact IT Service Desk to correct this.",
+        "<b>Some specific entitlements</b></br>Entitlements are specific privileges at specific services. If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.",
         "If you think you should have access, please contact support at your institution and include the name of the service you tried to access, any privileges that were noted as missing and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message."
       ],
       "context": [
