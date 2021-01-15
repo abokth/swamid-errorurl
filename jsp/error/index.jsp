@@ -52,8 +52,8 @@ String print_header(LinkedHashMap<String, LinkedHashMap<String, String>> basic_i
 			((!errorurl_tid.isEmpty()) ? "&errorurl_tid=" + URLEncoder.encode(errorurl_tid) : "") +
 			((!errorurl_ctx.isEmpty()) ? "&errorurl_ctx=" + URLEncoder.encode(errorurl_ctx) : "") +
 			"\">" +
-			"<img src=\"" + basic_info_lang.get(l).get("lang_flag") + "\" alt=\"\"> " +
-			"<span>" + basic_info_lang.get(l).get("lang_select") + "</span>" + 
+			"<img src=\"" + basic_info_lang.get(l).get("langFlag") + "\" alt=\"\"> " +
+			"<span>" + basic_info_lang.get(l).get("langSelect") + "</span>" + 
 			"</a>\n";
 	}
 
@@ -127,8 +127,8 @@ String print_error(LinkedHashMap<String, String> basic_info, LinkedHashMap <Stri
 	String header = get_errorcode_header(errorurl_errors, errorurl_code, errorurl_ctx);
 	LinkedList<String> body_paragraphs = get_errorcode_body(errorurl_errors, errorurl_code, errorurl_ctx);
 
-	String contact_information = basic_info.get("contact_information");
-	String technical_information = basic_info.get("technical_information");
+	String contactInformation = basic_info.get("contactInformation");
+	String technicalInformation = basic_info.get("technicalInformation");
 
 	String output = "";
 
@@ -142,7 +142,7 @@ String print_error(LinkedHashMap<String, String> basic_info, LinkedHashMap <Stri
 		output += "<p>" + body_paragraph + "\n";
 	}
 
-	output += "<p>" + contact_information + "\n";
+	output += "<p>" + contactInformation + "\n";
 
 	String readable_date = "";
 	if (errorurl_ts.matches("\\d+")) {
@@ -153,7 +153,7 @@ String print_error(LinkedHashMap<String, String> basic_info, LinkedHashMap <Stri
 
 	if (!errorurl_ctx.isEmpty() && !errorurl_ctx.equals("ERRORURL_CTX")) {
 
-		output += "<p>" + technical_information + ":<br>\n" +
+		output += "<p>" + technicalInformation + ":<br>\n" +
 			"<p class=\"ml-4\">\n" +
 			"<code>\n" +
 			"ERRORURL_TS:  " + safeHtml(errorurl_ts) + readable_date + "<br>\n" +

@@ -47,7 +47,7 @@ function print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $erroru
 		$first = false;
 
 ?>
-<a href="?lang=<?= $l ?><?= ($entityid) ? "&entityid=" . urlencode($entityid) : "" ?><?= ($errorurl_code) ? "&errorurl_code=" . urlencode($errorurl_code) : "" ?><?= ($errorurl_ts) ? "&errorurl_ts=" . urlencode($errorurl_ts) : "" ?><?= ($errorurl_rp) ? "&errorurl_rp=" . urlencode($errorurl_rp) : "" ?><?= ($errorurl_tid) ? "&errorurl_tid=" . urlencode($errorurl_tid) : "" ?><?= ($errorurl_ctx) ? "&errorurl_ctx=" . urlencode($errorurl_ctx) : "" ?>"><img src="<?= $basic_info_lang[$l]['lang_flag'] ?>" alt=""> <span><?= $basic_info_lang[$l]['lang_select'] ?></span></a>
+<a href="?lang=<?= $l ?><?= ($entityid) ? "&entityid=" . urlencode($entityid) : "" ?><?= ($errorurl_code) ? "&errorurl_code=" . urlencode($errorurl_code) : "" ?><?= ($errorurl_ts) ? "&errorurl_ts=" . urlencode($errorurl_ts) : "" ?><?= ($errorurl_rp) ? "&errorurl_rp=" . urlencode($errorurl_rp) : "" ?><?= ($errorurl_tid) ? "&errorurl_tid=" . urlencode($errorurl_tid) : "" ?><?= ($errorurl_ctx) ? "&errorurl_ctx=" . urlencode($errorurl_ctx) : "" ?>"><img src="<?= $basic_info_lang[$l]['langFlag'] ?>" alt=""> <span><?= $basic_info_lang[$l]['langSelect'] ?></span></a>
 <?php
 
 	}
@@ -126,8 +126,8 @@ function print_error($print_sub_header, $entityid, $errorurl_code, $errorurl_ts,
 	$header = get_errorcode_header($errorurl_code, $errorurl_ctx);
 	$body_paragraphs = get_errorcode_body($errorurl_code, $errorurl_ctx);
 
-	$contact_information = $basic_info['contact_information'];
-	$technical_information = $basic_info['technical_information'];
+	$contactInformation = $basic_info['contactInformation'];
+	$technicalInformation = $basic_info['technicalInformation'];
 
 	if ($print_sub_header) {
 ?>
@@ -146,14 +146,14 @@ function print_error($print_sub_header, $entityid, $errorurl_code, $errorurl_ts,
 	}
 
 ?>
-<p><?= $contact_information ?>
+<p><?= $contactInformation ?>
 
 <?php
 
 	if ($errorurl_ctx && $errorurl_ctx != 'ERRORURL_CTX') {
 
 ?>
-<p><?= $technical_information ?>:<br>
+<p><?= $technicalInformation ?>:<br>
 <p class="ml-4">
 <code>
 ERRORURL_TS:  <?= htmlentities($errorurl_ts, ENT_QUOTES) ?><?= (is_numeric($errorurl_ts)) ? ' (' . date(DATE_ATOM, $errorurl_ts) . ')' : '' ?><br>

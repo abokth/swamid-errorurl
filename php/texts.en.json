@@ -1,10 +1,10 @@
 {
   "common": {
     "logo": "logo.png",
-    "lang_flag": "english.png",
-    "lang_select": "In English",
-    "contact_information": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
-    "technical_information": "Technical information",
+    "langFlag": "english.png",
+    "langSelect": "In English",
+    "contactInformation": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
+    "technicalInformation": "Technical information",
     "footer": "<hr>"
   },
   "errors": [

@@ -1,10 +1,10 @@
 {
   "common": {
     "logo": "logo.png",
-    "lang_flag": "swedish.png",
-    "lang_select": "På svenska",
-    "contact_information": "Supporten för din organisation, DISPLAYNAME, kan nås via EMAIL.",
-    "technical_information": "Teknisk information",
+    "langFlag": "swedish.png",
+    "langSelect": "På svenska",
+    "contactInformation": "Supporten för din organisation, DISPLAYNAME, kan nås via EMAIL.",
+    "technicalInformation": "Teknisk information",
     "footer": "<hr>"
   },
   "errors": [

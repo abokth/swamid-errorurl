@@ -119,10 +119,10 @@ foreach ($languages as $lang) {
 	$errorurl_errors_lang[$lang] = array();
 
 	$basic_info_lang[$lang]['logo'] = $parsed_json['common']['logo'];
-	$basic_info_lang[$lang]['lang_flag'] = $parsed_json['common']['lang_flag'];
-	$basic_info_lang[$lang]['lang_select'] = $parsed_json['common']['lang_select'];
-	$basic_info_lang[$lang]['contact_information'] = $parsed_json['common']['contact_information'];
-	$basic_info_lang[$lang]['technical_information'] = $parsed_json['common']['technical_information'];
+	$basic_info_lang[$lang]['langFlag'] = $parsed_json['common']['langFlag'];
+	$basic_info_lang[$lang]['langSelect'] = $parsed_json['common']['langSelect'];
+	$basic_info_lang[$lang]['contactInformation'] = $parsed_json['common']['contactInformation'];
+	$basic_info_lang[$lang]['technicalInformation'] = $parsed_json['common']['technicalInformation'];
 	$basic_info_lang[$lang]['footer'] = $parsed_json['common']['footer'];
 
 	foreach ($parsed_json['errors'] as $error) {

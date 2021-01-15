@@ -118,10 +118,10 @@ for (String l : languages) {
 	JSONObject common = jobject.getJSONObject("common");
 
 	basic_info.put("logo", common.getString("logo"));
-	basic_info.put("lang_flag", common.getString("lang_flag"));
-	basic_info.put("lang_select", common.getString("lang_select"));
-	basic_info.put("contact_information", common.getString("contact_information"));
-	basic_info.put("technical_information", common.getString("technical_information"));
+	basic_info.put("langFlag", common.getString("langFlag"));
+	basic_info.put("langSelect", common.getString("langSelect"));
+	basic_info.put("contactInformation", common.getString("contactInformation"));
+	basic_info.put("technicalInformation", common.getString("technicalInformation"));
 	basic_info.put("footer", common.getString("footer"));
 
 	basic_info_lang.put(l, basic_info);
