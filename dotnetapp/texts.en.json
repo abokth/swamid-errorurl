@@ -2,7 +2,7 @@
   "common": {
     "logo": "logo.png",
     "lang": "en",
-    "langFlag": "/images/english.png",
+    "langFlag": "english.png",
     "langSelect": "In English",
     "contactInformation": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
     "technicalInformation": "Technical information",
