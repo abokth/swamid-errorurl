@@ -1,18 +1,19 @@
 {
-  "common":
-    {
-      "logo": "logo.png",
-      "lang_flag": "english.png",
-      "lang_select": "In English",
-      "contact_information": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
-      "technical_information": "Technical information",
-      "footer": "<hr>"
-    },
+  "common": {
+    "logo": "logo.png",
+    "lang_flag": "english.png",
+    "lang_select": "In English",
+    "contact_information": "The support of your organisation, DISPLAYNAME, can be reached at EMAIL.",
+    "technical_information": "Technical information",
+    "footer": "<hr>"
+  },
   "errors": [
     {
       "type": "ERRORURL_CODE",
       "header": "Login failed",
-      "body": [ "Login failed at the service you tried to access. Please see below for possible reasons and actions." ]
+      "body": [
+        "Login failed at the service you tried to access. Please see below for possible reasons and actions."
+      ]
     },
     {
       "type": "IDENTIFICATION_FAILURE",
