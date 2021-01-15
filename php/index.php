@@ -1,26 +1,22 @@
 <?php
 
-require("errorurl_errors.php");
+require("parse_config.php");
 
 function safe_get($param)
 {
 	return (isset($_GET[$param]) ? $_GET[$param] : "");
 }
 
-function trim_ws($param)
-{
-	return trim(preg_replace('/^[ \t]*/m', '', $param));
-}
-
 function print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $errorurl_tid, $errorurl_ctx)
 {
 	global $languages;
 	global $basic_info;
+	global $basic_info_lang;
 	global $errorurl_errors;
 	global $entityid;
 
-	$title = get_errorcode_header($lang, $errorurl_code, $errorurl_ctx);
-	$logo = $basic_info['logo']->get($lang);
+	$title = get_errorcode_header($errorurl_code, $errorurl_ctx);
+	$logo = $basic_info['logo'];
 
 ?>
 <html>
@@ -51,7 +47,7 @@ function print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $erroru
 		$first = false;
 
 ?>
-<a href="?lang=<?= $l ?><?= ($entityid) ? "&entityid=" . urlencode($entityid) : "" ?><?= ($errorurl_code) ? "&errorurl_code=" . urlencode($errorurl_code) : "" ?><?= ($errorurl_ts) ? "&errorurl_ts=" . urlencode($errorurl_ts) : "" ?><?= ($errorurl_rp) ? "&errorurl_rp=" . urlencode($errorurl_rp) : "" ?><?= ($errorurl_tid) ? "&errorurl_tid=" . urlencode($errorurl_tid) : "" ?><?= ($errorurl_ctx) ? "&errorurl_ctx=" . urlencode($errorurl_ctx) : "" ?>"><img src="<?= $basic_info['lang_flag']->get($l) ?>" alt=""> <span><?= $basic_info['lang_select']->get($l) ?></span></a>
+<a href="?lang=<?= $l ?><?= ($entityid) ? "&entityid=" . urlencode($entityid) : "" ?><?= ($errorurl_code) ? "&errorurl_code=" . urlencode($errorurl_code) : "" ?><?= ($errorurl_ts) ? "&errorurl_ts=" . urlencode($errorurl_ts) : "" ?><?= ($errorurl_rp) ? "&errorurl_rp=" . urlencode($errorurl_rp) : "" ?><?= ($errorurl_tid) ? "&errorurl_tid=" . urlencode($errorurl_tid) : "" ?><?= ($errorurl_ctx) ? "&errorurl_ctx=" . urlencode($errorurl_ctx) : "" ?>"><img src="<?= $basic_info_lang[$l]['lang_flag'] ?>" alt=""> <span><?= $basic_info_lang[$l]['lang_select'] ?></span></a>
 <?php
 
 	}
@@ -62,7 +58,7 @@ function print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $erroru
 
 }
 
-function get_errorcode_header($lang, $errorurl_code, $errorurl_ctx)
+function get_errorcode_header($errorurl_code, $errorurl_ctx)
 {
 	global $errorurl_errors;
 
@@ -74,7 +70,7 @@ function get_errorcode_header($lang, $errorurl_code, $errorurl_ctx)
 		foreach ($errorurl_error->get_ctx() as $errorurl_error_ctx) {
 			foreach ($errorurl_error_ctx->get_identifiers() as $identifier) {
 				if (strpos($errorurl_ctx, $identifier) !== false) {
-					$text = trim_ws($errorurl_error_ctx->get_header($lang));
+					$text = $errorurl_error_ctx->get_header();
 					$ctx_found = true;
 					break;
 				}
@@ -85,13 +81,13 @@ function get_errorcode_header($lang, $errorurl_code, $errorurl_ctx)
 		}
 	}
 	if ($text == '') {
-		$text = trim_ws($errorurl_error->get_header($lang));
+		$text = $errorurl_error->get_header();
 	}
 
 	return $text;
 }
 
-function get_errorcode_body($lang, $errorurl_code, $errorurl_ctx)
+function get_errorcode_body($errorurl_code, $errorurl_ctx)
 {
 	global $errorurl_errors;
 
@@ -103,7 +99,7 @@ function get_errorcode_body($lang, $errorurl_code, $errorurl_ctx)
 		foreach ($errorurl_error->get_ctx() as $errorurl_error_ctx) {
 			foreach ($errorurl_error_ctx->get_identifiers() as $identifier) {
 				if (strpos($errorurl_ctx, $identifier) !== false) {
-					$text = trim_ws($errorurl_error_ctx->get_body($lang));
+					$text = $errorurl_error_ctx->get_body();
 					$ctx_found = true;
 					break;
 				}
@@ -114,24 +110,24 @@ function get_errorcode_body($lang, $errorurl_code, $errorurl_ctx)
 		}
 	}
 	if ($text == '') {
-		$text = trim_ws($errorurl_error->get_body($lang));
+		$text = $errorurl_error->get_body();
 	}
 
 	return $text;
 }
 
-function print_error($lang, $print_sub_header, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx)
+function print_error($print_sub_header, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx)
 {
 	global $basic_info;
 	global $errorurl_errors;
 
 	$errorurl_error = $errorurl_errors[$errorurl_code];
 
-	$header = get_errorcode_header($lang, $errorurl_code, $errorurl_ctx);
-	$body = get_errorcode_body($lang, $errorurl_code, $errorurl_ctx);
+	$header = get_errorcode_header($errorurl_code, $errorurl_ctx);
+	$body_paragraphs = get_errorcode_body($errorurl_code, $errorurl_ctx);
 
-	$contact_information = $basic_info['contact_information']->get($lang);
-	$technical_information = $basic_info['technical_information']->get($lang);
+	$contact_information = $basic_info['contact_information'];
+	$technical_information = $basic_info['technical_information'];
 
 	if ($print_sub_header) {
 ?>
@@ -140,9 +136,16 @@ function print_error($lang, $print_sub_header, $entityid, $errorurl_code, $error
 
 	}
 
-?>
-<?= $body ?>
+	foreach ($body_paragraphs as $body_paragraph) {
 
+?>
+<p><?= $body_paragraph ?>
+
+<?php
+
+	}
+
+?>
 <p><?= $contact_information ?>
 
 <?php
@@ -177,32 +180,39 @@ if (!in_array($lang, $languages)) {
 	$lang = $default_lang;
 }
 
+$errorurl_errors = $errorurl_errors_lang[$lang];
+$basic_info = $basic_info_lang[$lang];
+
 if (!in_array($errorurl_code, array('IDENTIFICATION_FAILURE', 'AUTHENTICATION_FAILURE', 'AUTHORIZATION_FAILURE', 'OTHER_ERROR'))) {
 	$errorurl_code = 'ERRORURL_CODE';
 }
 
 if (in_array($errorurl_code, array('IDENTIFICATION_FAILURE', 'AUTHENTICATION_FAILURE', 'AUTHORIZATION_FAILURE', 'OTHER_ERROR'))) {
 	print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $errorurl_tid, $errorurl_ctx);
-	print_error($lang, $print_sub_header = false, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
+	print_error($print_sub_header = false, $entityid, $errorurl_code, $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
 } else {
-	print_header($lang, $errorurl_code, $errorurl_rp, $errorurl_ts, $errorurl_tid, $errorurl_ctx);
+	print_header($lang, 'ERRORURL_CODE', $errorurl_rp, $errorurl_ts, $errorurl_tid, $errorurl_ctx);
+
+	foreach ($errorurl_errors['ERRORURL_CODE']->get_body() as $body_paragraph) {
 
 ?>
-<?= trim_ws($errorurl_errors[$errorurl_code]->get_body($lang)) ?>
+<p><?= $body_paragraph ?>
 
 <?php
+
+	}
 
 	foreach ($errorurl_errors as $errorurl_error) {
 		if ($errorurl_error->get_id() == "ERRORURL_CODE") {
 			continue;
 		}
-		print_error($lang, $print_sub_header = true, $entityid, $errorurl_error->get_id(), $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
+		print_error($print_sub_header = true, $entityid, $errorurl_error->get_id(), $errorurl_ts, $errorurl_rp, $errorurl_tid, $errorurl_ctx);
 	}
 
 }
 
 ?>
-<?= $basic_info['footer']->get($lang) ?>
+<?= $basic_info['footer'] ?>
 
 </div>
 </body>
