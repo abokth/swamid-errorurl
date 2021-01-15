@@ -2,25 +2,17 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Swamid.Errorurl.Models;
 using Swamid.Errorurl.Domain;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Builder;
 
 namespace Swamid.Errorurl.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private IStringLocalizer<HomeController> _localizer;
-        //private IOptions<RequestLocalizationOptions> _locOptions;
         private LanguageSettings _languageSettings;
         private string _culture;
 
@@ -33,8 +25,6 @@ namespace Swamid.Errorurl.Controllers
 )
         {
             _logger = logger;
-            //_localizer = localizer;
-            //_locOptions = LocOptions;
             _languageSettings = languageSettings;
         }
        
@@ -70,7 +60,7 @@ namespace Swamid.Errorurl.Controllers
                 //ToDo handle if e is null
                 model.LoginError = new List<LoginError>() { e };
             }
-            Footer = le.Common.Footer;// _localizer.GetString("FooterText").Value;
+            Footer = le.Common.Footer;
             Title = model.LoginError.First().Header;
             return View(model);
             
@@ -79,14 +69,12 @@ namespace Swamid.Errorurl.Controllers
         {
             if (errors != null)
             {
-                //model.Culture = errors.Common.Lang;
-                //model.CultureText = errors.Common.LangSelect;
-                //model.CultureLogo = GetLangNavigation(errors.Common.LangFlag);
                 model.Navigations = GetLangNavigation();
                 model.TechnicalInfo = errors.Common.TechnicalInformation;
                 model.ContactInfo = errors.Common.ContactInformation;
             }
         }
+
         private List<Navigation> GetLangNavigation()
         {
             var navigations = new List<Navigation>(3);
@@ -138,7 +126,6 @@ namespace Swamid.Errorurl.Controllers
         {
             var e = (from l in _languageSettings.LoginErrors.Where(e => e.Common.Lang == _culture) select l).FirstOrDefault();
             return e;
-            //return _languageSettings.LoginErrors.Where(e => e. == _culture).FirstOrDefault();
         }
     }
 }

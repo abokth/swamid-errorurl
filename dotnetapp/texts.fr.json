@@ -3,24 +3,24 @@
     "logo": "logo.png",
     "lang": "fr",
     "langFlag": "/images/french.png",
-    "langSelect": "En français",
-    "contactInformation": "L'assistance de votre organisation, DISPLAYNAME, peut être contactée à l'adresse EMAIL.",
+    "langSelect": "En franÃ§ais",
+    "contactInformation": "L'assistance de votre organisation, DISPLAYNAME, peut Ãªtre contactÃ©e Ã  l'adresse EMAIL.",
     "technicalInformation": "Informations techniques",
     "footer": ""
   },
   "errors": [
     {
       "type": "ERRORURL_CODE",
-      "header": "Échec de la connexion",
-      "body": [ "La connexion a échoué au service auquel vous avez tenté d'accéder. Veuillez voir ci-dessous pour les raisons et actions possibles." ]
+      "header": "Ã‰chec de la connexion",
+      "body": [ "La connexion a Ã©chouÃ© au service auquel vous avez tentÃ© d'accÃ©der. Veuillez voir ci-dessous pour les raisons et actions possibles." ]
     },
     {
       "type": "IDENTIFICATION_FAILURE",
-      "header": "L'identification a échoué",
+      "header": "L'identification a Ã©chouÃ©",
       "body": [
-        "Le service auquel vous avez tenté d'accéder n'a pas obtenu tous les attributs requis pour l'identification et / ou la personnalisation.",
-        "Cela peut être dû au fait que votre établissement n'a pas ces attributs ou que votre établissement n'est pas configuré pour libérer ces attributs pour le service auquel vous avez tenté d'accéder.",
-        "Veuillez contacter le support de votre institution et inclure le nom du service auquel vous avez tenté d'accéder, les attributs manquants si vous savez ce qu'ils sont (le service peut vous en avoir informé) et, si possible, une capture d'écran du message d'erreur au service ( y compris la barre d'adresse en haut du navigateur Web) et également de ce message."
+        "Le service auquel vous avez tentÃ© d'accÃ©der n'a pas obtenu tous les attributs requis pour l'identification et / ou la personnalisation.",
+        "Cela peut Ãªtre dÃ» au fait que votre Ã©tablissement n'a pas ces attributs ou que votre Ã©tablissement n'est pas configurÃ© pour libÃ©rer ces attributs pour le service auquel vous avez tentÃ© d'accÃ©der.",
+        "Veuillez contacter le support de votre institution et inclure le nom du service auquel vous avez tentÃ© d'accÃ©der, les attributs manquants si vous savez ce qu'ils sont (le service peut vous en avoir informÃ©) et, si possible, une capture d'Ã©cran du message d'erreur au service ( y compris la barre d'adresse en haut du navigateur Web) et Ã©galement de ce message."
       ]
     },
     {

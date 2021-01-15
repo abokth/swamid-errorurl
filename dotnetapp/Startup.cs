@@ -33,18 +33,6 @@ namespace Swamid.Errorurl
             }
             services.AddSingleton<LanguageSettings>(languageSettings);
 
-            //services.Configure<RequestLocalizationOptions>(options =>
-            //{
-            //    var cultures = new List<CultureInfo> 
-            //    {
-            //        new CultureInfo("sv"),
-            //        new CultureInfo("en")
-            //    };
-            //    options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("sv");
-            //    options.SupportedCultures = cultures;
-            //    options.SupportedUICultures = cultures;
-            //});
-
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -65,9 +53,6 @@ namespace Swamid.Errorurl
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            //var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
-            //app.UseRequestLocalization(options.Value);
 
             app.UseRouting();
 

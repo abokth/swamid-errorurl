@@ -20,7 +20,7 @@ namespace Swamid.Errorurl.Helpers
         public static LoginErrors GetErrorTexts(string fileName)
         {
             var path = ToApplicationPath(fileName);
-            var json = System.IO.File.ReadAllText(path, Encoding.GetEncoding("ISO-8859-1"));
+            var json = System.IO.File.ReadAllText(path, Encoding.UTF8);
             var errors = JsonConvert.DeserializeObject<LoginErrors>(json);
             return errors;
         }

@@ -3,24 +3,24 @@
     "logo": "logo.png",
     "lang": "es",
     "langFlag": "/images/spanish.png",
-    "langSelect": "En espaÒol",
-    "contactInformation": "Puede comunicarse con el soporte de su organizaciÛn, DISPLAYNAME, en EMAIL.",
-    "technicalInformation": "InformaciÛn tÈcnica",
+    "langSelect": "En espa√±ol",
+    "contactInformation": "Puede comunicarse con el soporte de su organizaci√≥n, DISPLAYNAME, en EMAIL.",
+    "technicalInformation": "Informaci√≥n t√©cnica",
     "footer": ""
   },
   "errors": [
     {
       "type": "ERRORURL_CODE",
       "header": "Error de inicio de sesion",
-      "body": [ "Error de inicio de sesiÛn en el servicio al que intentÛ acceder. Consulte a continuaciÛn las posibles razones y acciones." ]
+      "body": [ "Error de inicio de sesi√≥n en el servicio al que intent√≥ acceder. Consulte a continuaci√≥n las posibles razones y acciones." ]
     },
     {
       "type": "IDENTIFICATION_FAILURE",
-      "header": "FallÛ la identificaciÛn",
+      "header": "Fall√≥ la identificaci√≥n",
       "body": [
-        "El servicio al que intentÛ acceder no obtuvo todos los atributos necesarios para la identificaciÛn y / o personalizaciÛn.",
-        "Esto puede deberse a que a su instituciÛn le faltan esos atributos o que su instituciÛn no est· configurada para liberar esos atributos al servicio al que intentÛ acceder.",
-        "ComunÌquese con el soporte de su instituciÛn e incluya el nombre del servicio al que intentÛ acceder, cualquier atributo que falte si sabe cu·les son (es posible que el servicio le haya informado) y, si es posible, una captura de pantalla del mensaje de error en el servicio ( incluida la barra de direcciones en la parte superior del navegador web) y tambiÈn de este mensaje."
+        "El servicio al que intent√≥ acceder no obtuvo todos los atributos necesarios para la identificaci√≥n y / o personalizaci√≥n.",
+        "Esto puede deberse a que a su instituci√≥n le faltan esos atributos o que su instituci√≥n no est√° configurada para liberar esos atributos al servicio al que intent√≥ acceder.",
+        "Comun√≠quese con el soporte de su instituci√≥n e incluya el nombre del servicio al que intent√≥ acceder, cualquier atributo que falte si sabe cu√°les son (es posible que el servicio le haya informado) y, si es posible, una captura de pantalla del mensaje de error en el servicio ( incluida la barra de direcciones en la parte superior del navegador web) y tambi√©n de este mensaje."
       ]
     },
     {
