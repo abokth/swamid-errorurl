@@ -18,7 +18,7 @@ The HTML version (in the html directory):
 The PHP version (in the php directory):
 
 1. Replace logo.png with your own logo
-1. Update at least DISPLAYNAME and EMAIL in config.php
+1. Update at least DISPLAYNAME and EMAIL in texts.\*.json
 1. Upload the contents of php to, for example, https://saml-error.example.com
 1. Tell your federation operator to set the errorURL of your Identity Provider to https://saml-error.example.com/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
 
