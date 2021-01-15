@@ -222,6 +222,8 @@ if (Arrays.asList("IDENTIFICATION_FAILURE", "AUTHENTICATION_FAILURE", "AUTHORIZA
 
 }
 
+out.println("<hr>");
+
 out.println(basic_info.get("footer"));
 
 %>

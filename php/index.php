@@ -212,6 +212,7 @@ if (in_array($errorurl_code, array('IDENTIFICATION_FAILURE', 'AUTHENTICATION_FAI
 }
 
 ?>
+<hr>
 <?= $basic_info['footer'] ?>
 
 </div>
