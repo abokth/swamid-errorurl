@@ -22,7 +22,7 @@ The PHP version (in the php directory):
 1. Upload the contents of php to, for example, https://saml-error.example.com
 1. Tell your federation operator to set the errorURL of your Identity Provider to https://saml-error.example.com/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
 
-The JSP version (in the jsp directory):
+The JSP version (in the jsp directory) - Apache Tomcat:
 
 1. Replace logo.png with your own logo
 1. Update at least DISPLAYNAME and EMAIL in WEB-INF/resources/texts.\*.json
@@ -30,6 +30,31 @@ The JSP version (in the jsp directory):
 1. Create error.war file (jar -c -f ../error.war \*)
 1. Upload error.war to, for example, /opt/tomcat/webapps (resulting in URL https://saml-error.examepl.com/error/) and restart Tomcat
 1. Tell your federation operator to set the errorURL of your Identity Provider to https://saml-error.example.com/error/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
+
+The JSP version (in the jsp directory) - Jetty:
+
+1. Replace logo.png with your own logo
+1. Update at least DISPLAYNAME and EMAIL in WEB-INF/resources/texts.\*.json
+1. Download json.org from https://github.com/stleary/JSON-java and save to WEB-INF/lib
+1. Create error.war file (jar -c -f ../error.war \*)
+1. Download and configure Jetty
+  1. Download and unpack tgz from https://www.eclipse.org/jetty/download.php
+    1. ```mkdir /tmp/jetty```
+    1. ```cd /tmp/jetty```
+    1. ```wget https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/11.0.0/jetty-home-11.0.0.tar.gz```
+    1. ```tar xzf jetty-home-11.0.0.tar.gz```
+  1. Set JETTY_HOME
+    1. ```export JETTY_HOME=/tmp/jetty/jetty-home-11.0.0```
+  1. Initialize jetty-base
+    1. ```mkdir /tmp/jetty-base```
+    1. ```cd /tmp/jetty-base```
+    1. ```java -jar $JETTY_HOME/start.jar --add-module=server,http,deploy,jsp```
+  1. Deploy error.war
+    1. ```cp /tmp/error.war /tmp/jetty-base/webapps```
+  1. Start Jetty
+    1. ```cd /tmp/jetty-base```
+    1. ```java -jar $JETTY_HOME/start.jar```
+1. Tell your federation operator to set the errorURL of your Identity Provider to http://saml-error.example.com:8080/error/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
 
 The .Net Core version (in the dotnetapp directory):
 
