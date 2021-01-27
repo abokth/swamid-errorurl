@@ -27,7 +27,8 @@ The JSP version (in the jsp directory):
 1. Replace logo.png with your own logo
 1. Update at least DISPLAYNAME and EMAIL in WEB-INF/resources/texts.\*.json
 1. Download json.org from https://github.com/stleary/JSON-java and save to WEB-INF/lib
-1. Upload the contents of jsp to, for example, /opt/tomcat/webapps (https://saml-error.examepl.com/error/) and restart Tomcat
+1. Create error.war file (jar -c -f ../error.war \*)
+1. Upload error.war to, for example, /opt/tomcat/webapps (resulting in URL https://saml-error.examepl.com/error/) and restart Tomcat
 1. Tell your federation operator to set the errorURL of your Identity Provider to https://saml-error.example.com/error/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
 
 The .Net Core version (in the dotnetapp directory):
