@@ -26,7 +26,7 @@ The JSP version (in the jsp directory) - Shibboleth IdP v4 (Jetty):
 
 1. Replace webapp/logo.png with your own logo
 1. Update at least DISPLAYNAME and EMAIL in webapp/WEB-INF/resources/texts.\*.json
-1. Download json.org from https://github.com/stleary/JSON-java and save to webapp/WEB-INF/lib
+1. Download json.org from https://github.com/stleary/JSON-java and save to webapp/WEB-INF/lib/
 1. Create error.war file (jar cf error.war -C webapp .)
 1. Copy error.war to jetty-base
     1. ```cp error.war /opt/jetty/jetty-base/```
@@ -38,7 +38,7 @@ The JSP version (in the jsp directory) - Jetty:
 
 1. Replace webapp/logo.png with your own logo
 1. Update at least DISPLAYNAME and EMAIL in webapp/WEB-INF/resources/texts.\*.json
-1. Download json.org from https://github.com/stleary/JSON-java and save to webapp/WEB-INF/lib
+1. Download json.org from https://github.com/stleary/JSON-java and save to webapp/WEB-INF/lib/
 1. Create error.war file (jar cf error.war -C webapp .)
 1. Download and configure Jetty
     1. Download and unpack tgz from https://www.eclipse.org/jetty/download.php
@@ -63,7 +63,7 @@ The JSP version (in the jsp directory) - Apache Tomcat:
 
 1. Replace webapp/logo.png with your own logo
 1. Update at least DISPLAYNAME and EMAIL in webapp/WEB-INF/resources/texts.\*.json
-1. Download json.org from https://github.com/stleary/JSON-java and save to webapp/WEB-INF/lib
+1. Download json.org from https://github.com/stleary/JSON-java and save to webapp/WEB-INF/lib/
 1. Create error.war file (jar cf error.war -C webapp .)
 1. Upload error.war to, for example, /opt/tomcat/webapps (resulting in URL https://saml-error.examepl.com/error/) and restart Tomcat
 1. Tell your federation operator to set the errorURL of your Identity Provider to https://saml-error.example.com/error/?errorurl_code=ERRORURL_CODE&errorurl_ts=ERRORURL_TS&errorurl_rp=ERRORURL_RP&errorurl_tid=ERRORURL_TID&errorurl_ctx=ERRORURL_CTX
