@@ -54,7 +54,7 @@
           "header": "Verifierad användare krävs",
           "body": [
             "Tjänsten du försökte nå kräver en <i>verifierad</i> användare, även kallad SWAMID AL3.",
-            "KTH är i dagsläget inte godkända leverantörer av SWAMID AL3. Kontakta KTH IT-Support eller försök med en annan identitetsleverantör, t.ex. eduID Sweden."
+            "KTH är i dagsläget inte en godkänd leverantör av SWAMID AL3. Kontakta KTH IT-Support eller försök med en annan identitetsleverantör, t.ex. eduID Sweden."
           ]
         },
         {
