@@ -4,7 +4,7 @@
     "langFlag": "swedish.png",
     "langSelect": "På svenska",
     "logo": "logo.png",
-    "contactInformation": "Supporten för din organisation, DISPLAYNAME, kan nås via <a href=\"mailto:EMAIL\">EMAIL</a>.",
+    "contactInformation": "IT-Support för <a href=\"https://www.kth.se/student/it/contact\">studenter</a> och <a href=\"https://intra.kth.se/it\">anställda</a>.",
     "technicalInformation": "Teknisk information",
     "footer": ""
   },
