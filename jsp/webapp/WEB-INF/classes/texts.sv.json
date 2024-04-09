@@ -68,8 +68,7 @@
           "header": "Bekräftad användare krävs",
           "body": [
             "Tjänsten du försökte nå kräver en <i>bekräftad</i> användare, även kallad SWAMID AL2.",
-            "Identiteter bekräftas oftast genom besök i organisationens servicedesk eller motsvarande under uppvisande av legitimation.",
-            "Kontakta din organisation för att bekräfta din användare och försök igen. Om du redan är bekräftad, kontakta din organisation och ange vilken tjänst du försökte nå, eventuella felmeddelande du fick samt, om möjligt, en skärmdump med felmeddelandena inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida."
+            "Läs instruktionerna under rubriken &quot;Vad innebär det för dig?&quot; på sidan <a href=\"https://intra.kth.se/utbildning/systemstod/ladok/forhojd-sakerhetsniva-for-inloggning-i-ladok-1.1225312\">Förhöjd säkerhetsnivå för inloggning i Ladok</a>."
           ]
         },
         {
